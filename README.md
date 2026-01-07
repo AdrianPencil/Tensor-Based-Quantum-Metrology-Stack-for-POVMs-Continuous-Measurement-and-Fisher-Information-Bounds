@@ -1,4 +1,6 @@
-# qmet
+# qmet (work alongside qip-stack)
+
+Please see https://github.com/AdrianPencil/Tensor-Coherent-Control-and-Lindblad-Noise-Modelling-Stack-with-Gate-Level-Verification-Benchmarks for more info
 
 A modular quantum metrology stack:
 
@@ -67,4 +69,5 @@ This project is built around that “observable map” philosophy.
 ---
 
 ## How it’s organized
+
 
