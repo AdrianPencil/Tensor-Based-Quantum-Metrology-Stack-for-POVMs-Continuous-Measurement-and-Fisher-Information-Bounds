@@ -1,0 +1,33 @@
+\section{Scope}
+
+\qmet{} is a small, test-backed library for composing quantum metrology problems:
+\[
+\text{sensor model} \rightarrow \text{measurement model} \rightarrow \text{estimator} \rightarrow \text{metrics}.
+\]
+
+\subsection{Design constraints}
+
+\begin{itemize}
+  \item Minimal and explicit math interfaces.
+  \item Small number of primitives per file.
+  \item Vectorized NumPy kernels where practical.
+  \item Deterministic results under a seed.
+\end{itemize}
+
+\subsection{What is in scope now}
+
+\begin{itemize}
+  \item Qubit-level protocol models (Ramsey, echo, interferometric fringes).
+  \item Discrete POVM probabilities and sampling.
+  \item Diffusive continuous measurement record model and SME backaction step.
+  \item Gaussian readout likelihood, Fisher information, CRB.
+  \item Noise characterization tools (Welch PSD, overlapping Allan deviation).
+\end{itemize}
+
+\subsection{What is intentionally not in scope now}
+
+\begin{itemize}
+  \item Full device Hamiltonians or ab initio material models.
+  \item Large-scale many-body simulation or tensor network backends.
+  \item Automatic differentiation pipelines.
+\end{itemize}

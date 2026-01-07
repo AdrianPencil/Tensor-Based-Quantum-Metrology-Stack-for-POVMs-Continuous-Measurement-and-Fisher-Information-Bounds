@@ -1,0 +1,29 @@
+\section{Noise and stability}
+
+This section documents utilities for noise characterization and drift.
+
+\subsection{PSD estimation}
+
+\code{noise/psd.py} provides Welch PSD for a real-valued time series.
+The output is a one-sided PSD estimate \(\mathrm{PSD}(f)\).
+
+\subsection{Allan deviation}
+
+\code{noise/allan.py} implements overlapping Allan deviation for uniformly sampled sequences.
+For averaging factor \(m\) and sample period \(\tau_0\),
+\[
+\tau = m\tau_0,
+\qquad
+\sigma_A^2(\tau)=\frac{1}{2(N-2m)}\sum_k \bigl(\bar y_{k+m}-\bar y_k\bigr)^2.
+\]
+\code{metrics/stability.py} wraps this into a small result container.
+
+\subsection{Drift models}
+
+\code{noise/drift.py} provides:
+\begin{itemize}
+  \item random walk drift for slow wandering parameters
+  \item linear drift for deterministic trends
+\end{itemize}
+
+These connect naturally to \code{estimation/filters.py} for online tracking.

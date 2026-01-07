@@ -1,0 +1,31 @@
+\section{Sensor API}
+
+Sensor models produce quantum states or expectations as functions of time and parameters.
+
+\subsection{\code{sensor/sensor\_model.py}}
+
+\begin{itemize}
+  \item \code{QubitSensorModel}: closed-form qubit evolution under a \(Z\) Hamiltonian with optional pure dephasing.
+  \item Pauli matrices \(\sigma_x,\sigma_y,\sigma_z\) are provided for convenience.
+\end{itemize}
+
+The core method is:
+\[
+\rho(t) = U(t)\rho(0)U(t)^\dagger,\qquad
+U(t)=\exp\!\left(-\ii \frac{\omega t}{2}\sigma_z\right),
+\]
+with an optional phenomenological dephasing that damps off-diagonal terms in the \(\sigma_z\) basis.
+
+\subsection{\code{sensor/device\_response.py}}
+
+A device response maps a sensor-level scalar \(x\) to a measured unit \(y\).
+The initial model is affine:
+\[
+y = g x + b,
+\]
+with optional clipping for saturation.
+
+\subsection{\code{sensor/calibration.py}}
+
+Calibration fits \(g,b\) from reference pairs \((x_{\text{true}}, y_{\text{meas}})\) using least squares.
+It also provides an inverse map to convert measurements back to sensor units.

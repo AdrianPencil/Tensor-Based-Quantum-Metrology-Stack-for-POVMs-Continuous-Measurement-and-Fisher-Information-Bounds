@@ -1,0 +1,35 @@
+\section{Examples}
+
+This section sketches minimal examples that can be run from Python.
+
+\subsection{Ramsey pipeline}
+
+A typical usage is:
+\begin{itemize}
+  \item pick times \(t_i\)
+  \item define Ramsey parameters \((\gamma_\phi,\phi_0,V)\)
+  \item compute \(\mu(t)\) and \(\partial \mu/\partial \omega\)
+  \item compute Fisher and CRB for a chosen \(\sigma_y\)
+\end{itemize}
+
+\subsection{Readout chain}
+
+A complete chain can be built as:
+\[
+x(t)=\mu(t)
+\rightarrow
+y_{\mathrm{mean}}(t)=g x(t)+b
+\rightarrow
+y(t)=y_{\mathrm{mean}}(t)+\epsilon(t).
+\]
+\code{case\_studies/readout\_chain\_example.py} provides a reference function.
+
+\subsection{Continuous weak measurement}
+
+The weak measurement flagship simulates:
+\[
+\dd Y = m(t)\dd t + \dd W,
+\quad
+\rho \mapsto \rho + \kappa\mathcal{D}[O](\rho)\dd t + \sqrt{\eta\kappa}\mathcal{H}[O](\rho)\dd W.
+\]
+It returns \(dY\) and a density-matrix trajectory.

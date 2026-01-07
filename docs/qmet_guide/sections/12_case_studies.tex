@@ -1,0 +1,23 @@
+\section{Case studies}
+
+Case studies keep the library grounded in realistic usage patterns.
+
+\subsection{NV-inspired Ramsey sensitivity}
+
+\code{case\_studies/nv\_ramsey\_sensitivity.py} performs a sensitivity study and returns:
+\begin{itemize}
+  \item \(\mu(t)\), \(\partial \mu/\partial \omega\)
+  \item per-sample Fisher contributions
+  \item total Fisher and CRB standard deviation
+  \item the time sample that maximizes Fisher contribution
+\end{itemize}
+
+\subsection{Readout chain example}
+
+\code{case\_studies/readout\_chain\_example.py} demonstrates:
+\begin{itemize}
+  \item sensor-level mean \(x(t)\) from Ramsey
+  \item affine device response \(y_{\mathrm{mean}}(t)=g x(t)+b\)
+  \item additive Gaussian noise and log-likelihood scoring
+\end{itemize}
+This is a template for plugging in real calibration and noise data later.

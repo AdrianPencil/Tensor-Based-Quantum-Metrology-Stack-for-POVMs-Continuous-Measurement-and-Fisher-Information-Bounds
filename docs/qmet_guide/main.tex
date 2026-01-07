@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+
+\input{preamble.tex}
+\input{macros.tex}
+
+\title{\textbf{qmet guide}\\\large A modular quantum metrology stack}
+\author{\textsc{Project Notes}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\clearpage
+
+\inputifexists{sections/00_scope.tex}
+\inputifexists{sections/01_math_core.tex}
+\inputifexists{sections/02_sensor_api.tex}
+\inputifexists{sections/03_measurement_models.tex}
+\inputifexists{sections/04_estimation_stack.tex}
+\inputifexists{sections/05_protocol_library.tex}
+\inputifexists{sections/06_noise_stability.tex}
+\inputifexists{sections/07_validation.tex}
+\inputifexists{sections/08_performance.tex}
+\inputifexists{sections/09_examples.tex}
+\inputifexists{sections/10_roadmap.tex}
+\inputifexists{sections/11_flagship_experiments.tex}
+\inputifexists{sections/12_case_studies.tex}
+
+\end{document}

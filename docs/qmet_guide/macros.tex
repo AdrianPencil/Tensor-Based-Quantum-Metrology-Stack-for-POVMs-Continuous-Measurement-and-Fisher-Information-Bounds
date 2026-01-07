@@ -1,0 +1,23 @@
+% qmet guide macros
+% Small set of macros used across sections. Keep it stable and minimal.
+
+\newcommand{\qmet}{\texttt{qmet}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\I}{\mathbb{I}}
+
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\E}{\operatorname{\mathbb{E}}}
+\newcommand{\Var}{\operatorname{Var}}
+
+\newcommand{\ketp}{\ket{+}}
+\newcommand{\proj}[1]{\ket{#1}\!\bra{#1}}
+
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+
+\newcommand{\inputifexists}[1]{%
+  \InputIfFileExists{#1}{}{\textbf{Missing file:} \code{#1}\par}%
+}

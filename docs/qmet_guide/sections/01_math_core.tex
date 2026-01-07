@@ -1,0 +1,53 @@
+\section{Math core}
+
+This section defines the minimal objects used across the stack.
+
+\subsection{States and operators}
+
+A density matrix \(\rho \in \C^{d \times d}\) satisfies:
+\[
+\rho = \rho^\dagger,\qquad \rho \succeq 0,\qquad \Tr(\rho)=1.
+\]
+
+An observable \(O\) is Hermitian, and expectations use:
+\[
+\langle O \rangle_\rho = \Tr(O\rho).
+\]
+
+\subsection{Basic linear algebra helpers}
+
+We use:
+\[
+[A,B] = AB - BA,\qquad \{A,B\} = AB + BA,\qquad A^\dagger = \overline{A}^{\,T}.
+\]
+
+\subsection{Lindblad dissipator}
+
+For an operator \(L\), the dissipator is:
+\[
+\mathcal{D}[L](\rho) = L\rho L^\dagger - \frac{1}{2}\{L^\dagger L,\rho\}.
+\]
+
+This appears in open-system models and in continuous measurement updates.
+
+\subsection{Gaussian readout likelihood}
+
+For independent samples:
+\[
+y_i \sim \mathcal{N}(\mu_i(\theta), \sigma^2),
+\]
+the log-likelihood is:
+\[
+\log p(y\mid \theta)= -\frac{1}{2\sigma^2}\sum_i (y_i-\mu_i(\theta))^2 - n\log\sigma - \frac{n}{2}\log(2\pi).
+\]
+
+\subsection{Fisher information and CRB}
+
+With Jacobian \(J_{i j} = \partial \mu_i / \partial \theta_j\),
+\[
+I(\theta) = \frac{1}{\sigma^2} J^T J.
+\]
+For unbiased estimators:
+\[
+\mathrm{Cov}(\hat\theta) \succeq I(\theta)^{-1}.
+\]

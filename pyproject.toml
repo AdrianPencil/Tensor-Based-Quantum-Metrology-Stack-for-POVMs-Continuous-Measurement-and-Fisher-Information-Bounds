@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qmet"
+version = "0.1.0"
+description = "Quantum metrology stack: sensor + measurement + estimation + protocols + noise + workflows."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Adrian Pencil"}]
+keywords = ["quantum", "metrology", "estimation", "fisher", "crb"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "numpy>=1.24",
+  "scipy>=1.10",
+]
+
+[project.urls]
+Homepage = "https://example.com"
+
+[project.scripts]
+qmet = "qmet.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

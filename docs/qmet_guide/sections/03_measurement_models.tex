@@ -1,0 +1,56 @@
+\section{Measurement models}
+
+Measurement models connect quantum states to observed data.
+
+\subsection{Discrete POVMs}
+
+A POVM is a set \(\{E_k\}\) such that:
+\[
+E_k \succeq 0,\qquad \sum_k E_k = \I.
+\]
+Given \(\rho\), the outcome probabilities are:
+\[
+p_k = \Tr(E_k \rho).
+\]
+
+The code provides:
+\begin{itemize}
+  \item validation of completeness
+  \item probability evaluation via vectorized traces
+  \item sampling outcomes given an RNG
+\end{itemize}
+
+\subsection{Continuous diffusive measurement record}
+
+For a Hermitian observable \(O\), a standard diffusive record model is:
+\[
+\dd Y = m(t)\dd t + \dd W,
+\qquad
+m(t)=2\sqrt{\eta\kappa}\,\langle O\rangle_{\rho(t)},
+\]
+where \(\kappa>0\) is measurement strength and \(\eta\in[0,1]\) is efficiency.
+
+The module \code{measurement/continuous.py} provides the record model, while
+\code{measurement/backaction.py} updates the state.
+
+\subsection{Backaction update}
+
+The implemented Ito step is:
+\[
+\dd\rho = \kappa \mathcal{D}[O](\rho)\dd t + \sqrt{\eta\kappa}\,\mathcal{H}[O](\rho)\dd W,
+\]
+with
+\[
+\mathcal{H}[O](\rho)= O\rho + \rho O - 2\langle O\rangle_\rho \rho.
+\]
+
+After each step the code projects back to a clean density matrix representation:
+Hermitian, trace one, and numerically PSD.
+
+\subsection{Readout noise}
+
+A basic readout layer is additive Gaussian noise:
+\[
+y = \mu + \epsilon,\qquad \epsilon\sim \mathcal{N}(0,\sigma^2),
+\]
+with vectorized log-likelihood used throughout estimation and tests.

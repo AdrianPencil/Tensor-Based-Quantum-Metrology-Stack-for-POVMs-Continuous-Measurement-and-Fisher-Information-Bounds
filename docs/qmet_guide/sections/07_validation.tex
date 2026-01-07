@@ -1,0 +1,30 @@
+\section{Validation}
+
+Validation in \qmet{} is test-first and built around reference pipelines.
+
+\subsection{Unit tests}
+
+The test suite includes:
+\begin{itemize}
+  \item Ramsey flagship sanity and Fisher-CRB consistency
+  \item weak measurement trajectory sanity (Hermitian, trace one, PSD up to tolerance)
+  \item Fisher and CRB algebraic identities for scalar and matrix cases
+\end{itemize}
+
+\subsection{Numerical invariants checked}
+
+Typical invariants:
+\begin{itemize}
+  \item \(\Tr(\rho)=1\)
+  \item \(\rho=\rho^\dagger\)
+  \item eigenvalues \(\lambda(\rho)\ge 0\) up to a small tolerance
+\end{itemize}
+
+\subsection{Reference experiment outputs}
+
+The flagship experiments produce stable outputs that are suitable for:
+\begin{itemize}
+  \item regression tests
+  \item documentation examples
+  \item baseline comparisons when adding new models
+\end{itemize}

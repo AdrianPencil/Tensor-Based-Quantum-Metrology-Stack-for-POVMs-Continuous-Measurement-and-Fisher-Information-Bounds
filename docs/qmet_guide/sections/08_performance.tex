@@ -1,0 +1,27 @@
+\section{Performance}
+
+The implementation is designed to be fast without being complicated.
+
+\subsection{Vectorization}
+
+Key kernels are vectorized:
+\begin{itemize}
+  \item Fisher information \(J^T J\) computed via BLAS-backed matrix multiply
+  \item POVM probabilities computed via \code{einsum}
+  \item Allan deviation uses prefix sums for fast window averages
+\end{itemize}
+
+\subsection{Precision}
+
+Core arrays use \(\code{float64}\) and \(\code{complex128}\) by default.
+Density matrix cleanup uses Hermitian symmetrization and eigenvalue clipping to suppress roundoff.
+
+\subsection{Scope of performance claims}
+
+Performance targets here are:
+\begin{itemize}
+  \item correctness first
+  \item stable vectorized kernels
+  \item minimal dependencies
+\end{itemize}
+Higher-performance backends can be added later as optional layers.

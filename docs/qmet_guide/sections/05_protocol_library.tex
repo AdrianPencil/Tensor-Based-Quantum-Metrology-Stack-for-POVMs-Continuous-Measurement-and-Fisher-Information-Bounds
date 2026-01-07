@@ -1,0 +1,40 @@
+\section{Protocol library}
+
+Protocols define how the sensor is driven and what mean signal is produced.
+
+\subsection{Ramsey}
+
+\code{protocols/ramsey.py} provides a closed-form model:
+\[
+\mu(t)=V e^{-\gamma_\phi t}\cos(\omega t+\phi_0),
+\qquad
+\frac{\partial \mu}{\partial \omega} = -V e^{-\gamma_\phi t}\,t\,\sin(\omega t+\phi_0).
+\]
+This directly supports Fisher and CRB calculations.
+
+\subsection{Spin echo}
+
+\code{protocols/spin\_echo.py} provides a stretched-exponential envelope model:
+\[
+\mu(t)=V \exp\!\bigl(-(t/T_2)^p\bigr)\cos(\omega t+\phi_0),
+\qquad
+\frac{\partial \mu}{\partial \omega} = -V \exp\!\bigl(-(t/T_2)^p\bigr)\,t\,\sin(\omega t+\phi_0).
+\]
+
+\subsection{Interferometric fringes}
+
+\code{protocols/interferometry.py} provides a cosine fringe:
+\[
+\mu(\phi)=b+V\cos(\phi+\phi_0),
+\qquad
+\frac{\partial \mu}{\partial \phi} = -V\sin(\phi+\phi_0),
+\]
+and a time-series specialization \(\phi(t)=\omega t+\phi_{\mathrm{init}}\).
+
+\subsection{Squeezing summary object}
+
+\code{protocols/squeezing.py} stores the Wineland squeezing parameter:
+\[
+\xi^2 = \frac{N\,\Var(J_\perp)}{\langle J\rangle^2}.
+\]
+It is a metrology-facing quantity used for interpreting sensitivity improvements.

@@ -1,0 +1,55 @@
+\section{Estimation stack}
+
+This section documents the estimation primitives used to turn data into parameter bounds and estimates.
+
+\subsection{Gaussian IID likelihood}
+
+For independent samples:
+\[
+y_i \sim \mathcal{N}(\mu_i(\theta), \sigma^2),
+\]
+\code{estimation/likelihood.py} provides:
+\begin{itemize}
+  \item total log-likelihood \(\log p(y\mid\mu)\)
+  \item score \(s(\theta)=\nabla_\theta \log p(y\mid\theta)\) given a Jacobian
+  \item observed Fisher \(I(\theta)\) given a Jacobian
+\end{itemize}
+
+With Jacobian \(J_{ij}=\partial \mu_i/\partial \theta_j\),
+\[
+s(\theta) = \frac{1}{\sigma^2}J^T(y-\mu),
+\qquad
+I(\theta)=\frac{1}{\sigma^2}J^T J.
+\]
+
+\subsection{Fisher information}
+
+\code{estimation/fisher.py} provides:
+\begin{itemize}
+  \item matrix Fisher for \(p\) parameters
+  \item scalar Fisher for a 1-parameter model
+\end{itemize}
+
+\subsection{Cramér-Rao bound}
+
+\code{estimation/crb.py} provides:
+\[
+\mathrm{Cov}(\hat\theta) \succeq I(\theta)^{-1}.
+\]
+A small diagonal ridge may be added for numerical robustness.
+
+\subsection{Grid Bayesian update}
+
+\code{estimation/bayes.py} implements a 1D grid posterior:
+\[
+p(\theta_i \mid \text{data}) \propto p(\theta_i)\,p(\text{data}\mid\theta_i),
+\]
+using log probabilities and stable normalization.
+
+\subsection{Online filtering}
+
+\code{estimation/filters.py} provides a minimal scalar Kalman filter for a random-walk latent parameter:
+\[
+x_{k+1}=x_k+w_k,\quad y_k=x_k+v_k.
+\]
+This supports drift tracking case studies.

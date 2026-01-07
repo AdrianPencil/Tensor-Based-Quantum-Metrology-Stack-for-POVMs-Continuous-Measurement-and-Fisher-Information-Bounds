@@ -1,0 +1,29 @@
+\section{Flagship experiments}
+
+Flagships are canonical end-to-end examples that tie modules together.
+
+\subsection{Ramsey under dephasing}
+
+\code{flagship/ramsey\_dephasing.py} runs:
+\begin{itemize}
+  \item Ramsey mean model with dephasing
+  \item Fisher information and CRB for \(\omega\) under Gaussian readout noise
+  \item optional simulation of a noisy record
+\end{itemize}
+
+\subsection{Weak measurement of a qubit}
+
+\code{flagship/weak\_measurement\_qubit.py} simulates:
+\begin{itemize}
+  \item diffusive measurement increments \(dY\)
+  \item stochastic backaction update for \(\rho\)
+\end{itemize}
+
+\subsection{Quantum-limited sensing comparison}
+
+\code{flagship/quantum\_limited\_sensing.py} compares:
+\begin{itemize}
+  \item classical Fisher from the chosen readout model
+  \item a qubit QFI benchmark \(F_Q=\sum_i t_i^2\)
+\end{itemize}
+The output is a small object that reports the ratio and gap.
